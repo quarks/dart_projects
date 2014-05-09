@@ -1,0 +1,4 @@
+Press and drag the mouse to define the line. Clicking the mouse will create a random line.
+If both ends of the line are within the circle there is no intersection. If one end of the line is inside and the other outside the circle then there is a single intersection point.
+If both ends of the line are outside the circle then there may be two intersection points, a single intersection point (line is a tangent) or no intersection points.
+Intersection points are show as red dots.

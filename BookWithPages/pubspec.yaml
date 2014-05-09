@@ -1,0 +1,8 @@
+name: Page_Turner
+description: A sample web application
+dependencies:
+  browser: any
+  http: any
+transformers:
+- $dart2js:
+   {'minify':true, 'checked':true}

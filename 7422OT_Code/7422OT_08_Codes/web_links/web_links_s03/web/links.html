@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="import" href="link.html">
+  </head>
+  <body>
+    <element name="web-links" extends="div">
+      <template>
+        <ul class="link">
+          <template repeat="webLink in webLinks">
+            <web-link web-link="{{ webLink }}"></web-link>
+          </template>
+        </ul>
+      </template>
+
+      <script type="application/dart" src="links.dart"></script>
+    </element>
+  </body>
+</html>

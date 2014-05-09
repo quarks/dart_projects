@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+  <body>
+    <element name="web-link" extends="div">
+      <template>
+        <li>
+          <a href="{{ webLink.url.toString() }}">
+            {{ webLink.name }}
+          </a>
+        </li>
+      </template>
+
+      <script type="application/dart" src="link.dart"></script>
+    </element>
+  </body>
+</html>

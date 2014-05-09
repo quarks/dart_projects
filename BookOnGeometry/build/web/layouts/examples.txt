@@ -1,0 +1,29 @@
+
+{
+"textfile":"pagetext.txt"
+,"nbr_images":2
+,"image0":"{\"x\":20,\"y\":30,\"filename\":\"bitmap1.png\"}"
+,"image1":"{\"x\":40,\"y\":50,\"filename\":\"bitmap2.png\"}"
+,"nbr_textareas":2
+,"textarea0":"{\"x\":10,\"y\":20,\"w\":30,\"h\":40}"
+,"textarea1":"{\"x\":110,\"y\":120,\"w\":130,\"h\":140}"
+}
+
+==============================================================
+{
+"textfile":"pagetext.txt"
+,"nbr_images":2
+,"image0":"{\"x\":20,\"y\":30,\"filename\":\"bitmap1.png\"}"
+,"image1":"{\"x\":40,\"y\":50,\"filename\":\"bitmap2.png\"}"
+,"nbr_textareas":2
+,"textarea0":"{\"x\":10,\"y\":20,\"w\":30,\"h\":40}"
+,"textarea1":"{\"x\":110,\"y\":120,\"w\":130,\"h\":140}"
+}
+
+================= PageLaout ====================
+textfile = pagetext.txt
+    Image area [20, 30, bitmap1.png ]
+    Image area [40, 50, bitmap2.png ]
+    Text area [10, 20, 30, 40 ]
+    Text area [110, 120, 130, 140 ]
+================================================

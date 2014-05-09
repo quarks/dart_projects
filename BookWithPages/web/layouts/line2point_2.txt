@@ -1,0 +1,10 @@
+{
+"PAPER":"paper002.jpg"
+
+,"AREA-NAMES":"ta1"
+,"ta1":"{\"X\":10,\"Y\":50,\"W\":310,\"H\":200}"
+
+,"TEXT-NAMES":"text1"
+,"text1":"{\"FILENAME\":\"line2point_2.txt\",\"TEXT-AREAS\":\"ta1\",\"FONT\":\"10pt Arial\",\"ALIGN\":\"JUSTIFY\",\"FONT-COLOR\":\"rgb(32,32,132)\",\"SPACING\":14}"
+
+}

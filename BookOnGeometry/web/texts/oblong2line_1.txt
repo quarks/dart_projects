@@ -1,0 +1,2 @@
+This demonstrates that it is possible to test for an interstion between a rectangle and a finite length line.
+As the green line rotates any rectangles it intersects with change colour.

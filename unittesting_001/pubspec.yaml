@@ -1,0 +1,5 @@
+name: unittesting_001
+description: A sample command-line application
+dependencies:
+  dartlero: any
+  unittest: any

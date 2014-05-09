@@ -1,0 +1,105 @@
+<h2>Intersection between a line and a rectangle</h2>
+
+
+<h3>Tests for intersection between a line and a rectangle.</h3>
+<p>There are two method here depending on whether you use two corners or a single 
+corner/width/height to specify the rectangle. Both methods only apply to lines of 
+finite length. The 'outcode' method is a utility method to make the test more 
+efficient.</p>
+<p>Make sure you include the constants from the introduction page.</p>
+<pre class="language-java">/**
+ * Determine whether a line intersects with a box.
+ * The box is represented by the top-left and bottom-right corner coordinates. 
+ * [lx0, ly0][lx1, ly1] start and end of the line
+ * [rx0, ry0] top-left corner of the rectangle
+ * [rx1, ry1] bottom-right corner of rectangle
+ */
+public boolean line_box_xyxy(float lx0, float ly0, float lx1, float ly1, float rx0, float ry0, float rx1, float ry1) {
+  int out1, out2;
+  float rectWidth = rx1 - rx0;
+  float rectHeight = ry1 - ry0;
+
+  if ((out2 = outcode(lx1, ly1, rx0, ry0, rectWidth, rectHeight)) == 0) {
+    return true;
+  }
+  while ((out1 = outcode(lx0, ly0, rx0, ry0, rectWidth, rectHeight)) != 0) {
+    if ((out1 & out2) != 0) {
+      return false;
+    }
+    if ((out1 & (OUT_LEFT | OUT_RIGHT)) != 0) {
+      float x = rx0;
+      if ((out1 & OUT_RIGHT) != 0) {
+        x += rectWidth;
+      }
+      ly0 = ly0 + (x - lx0) * (ly1 - ly0) / (lx1 - lx0);
+      lx0 = x;
+    } else {
+      float y = ry0;
+      if ((out1 & OUT_BOTTOM) != 0) {
+        y += rectHeight;
+      }
+      lx0 = lx0 + (y - ly0) * (lx1 - lx0) / (ly1 - ly0);
+      ly0 = y;
+    }
+  }
+  return true;
+}
+
+/**
+ * Determine whether a line intersects with a box.
+ * The box is represented by the top-left corner coordinates and the box width and height. 
+ * [lx0, ly0][lx1, ly1] start and end of the line
+ * [rx0, ry0] top-left corner of the rectangle
+ * [rWidth] width of the rectangle
+ * [rHeight] height of the rectangle
+ */
+public boolean line_box_xywh(float lx0, float ly0, float lx1, float ly1, float rx0, float ry0, float rWidth, float rHeight) {
+  int out1, out2;
+  if ((out2 = outcode(lx1, ly1, rx0, ry0, rWidth, rHeight)) == 0) {
+    return true;
+  }
+  while ((out1 = outcode(lx0, ly0, rx0, ry0, rWidth, rHeight)) != 0) {
+    if ((out1 & out2) != 0) {
+      return false;
+    }
+    if ((out1 & (OUT_LEFT | OUT_RIGHT)) != 0) {
+      float x = rx0;
+      if ((out1 & OUT_RIGHT) != 0) {
+        x += rWidth;
+      }
+      ly0 = ly0 + (x - lx0) * (ly1 - ly0) / (lx1 - lx0);
+      lx0 = x;
+    } else {
+      float y = ry0;
+      if ((out1 & OUT_BOTTOM) != 0) {
+        y += rHeight;
+      }
+      lx0 = lx0 + (y - ly0) * (lx1 - lx0) / (ly1 - ly0);
+      ly0 = y;
+    }
+  }
+  return true;
+}
+
+/**
+ * Code copied from {@link java.awt.geom.Rectangle2D#intersectsLine(float, float, float, float)}
+ */
+private int outcode(float pX, float pY, float rectX, float rectY, float rectWidth, float rectHeight) {
+  int out = 0;
+  if (rectWidth <= 0) {
+    out |= OUT_LEFT | OUT_RIGHT;
+  } else if (pX < rectX) {
+    out |= OUT_LEFT;
+  } else if (pX > rectX + rectWidth) {
+    out |= OUT_RIGHT;
+  }
+  if (rectHeight <= 0) {
+    out |= OUT_TOP | OUT_BOTTOM;
+  } else if (pY < rectY) {
+    out |= OUT_TOP;
+  } else if (pY > rectY + rectHeight) {
+    out |= OUT_BOTTOM;
+  }
+  return out;
+}
+</pre>

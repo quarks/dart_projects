@@ -1,0 +1,23 @@
+<h2>Introductiion</h2>
+
+
+<h3>Constants and variables used by these methods.</h3>
+<p>Make sure you include all of this code with any methods you paste into your Processing sketch.</p>
+<pre class="language-java">public final float ACCY        = 1E-9f;
+
+public final int OUT_LEFT      = 1;
+public final int OUT_TOP       = 2;
+public final int OUT_RIGHT     = 4;
+public final int OUT_BOTTOM    = 8;
+
+public final int ON_PLANE      = 16;
+public final int PLANE_INSIDE  = 17;
+public final int PLANE_OUTSIDE = 18;
+
+// This value controls how close the point must be to the line
+// for it to be considered on the line. You may change this 
+// depending on you needs
+public float NEARNESS          = 1.0;
+</pre>
+
+

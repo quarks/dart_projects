@@ -1,0 +1,65 @@
+---
+build.dart --machine --full
+[{"method":"mapping","params":{"from":"web/first_web_ui.html","to":"web\\out\\first_web_ui.html"}}]
+Total time spent on web/first_web_ui.html                    -- 330 ms
+Total time                                                   -- 363 ms
+build.dart finished [1505 ms]
+
+---
+build.dart --machine --changed=web\out\first_web_ui.css --changed=web\out\first_web_ui.dart --changed=web\out\f...
+Total time                                                   --  23 ms
+build.dart finished [565 ms]
+
+---
+build.dart --machine --changed=web\first_web_ui.dart
+[{"method":"mapping","params":{"from":"web/first_web_ui.html","to":"web\\out\\first_web_ui.html"}}]
+Total time spent on web/first_web_ui.html                    -- 311 ms
+Total time                                                   -- 336 ms
+build.dart finished [1258 ms]
+
+---
+build.dart --machine --changed=web\out\first_web_ui.css --changed=web\out\first_web_ui.dart --changed=web\out\f...
+Total time                                                   --  22 ms
+build.dart finished [503 ms]
+
+---
+build.dart --machine --changed=web\out\first_web_ui.html_bootstrap.dart.js --changed=web\out\first_web_ui.html_...
+Total time                                                   --  22 ms
+build.dart finished [520 ms]
+
+---
+build.dart --machine --changed=web\example.html
+[{"method":"mapping","params":{"from":"web/first_web_ui.html","to":"web\\out\\first_web_ui.html"}}]
+Total time spent on web/first_web_ui.html                    -- 308 ms
+Total time                                                   -- 333 ms
+build.dart finished [1042 ms]
+
+---
+build.dart --machine --changed=web\out\first_web_ui.css --changed=web\out\first_web_ui.dart --changed=web\out\f...
+Total time                                                   --  25 ms
+build.dart finished [4473 ms]
+
+---
+build.dart --machine --changed=web\example.html
+[{"method":"mapping","params":{"from":"web/first_web_ui.html","to":"web\\out\\first_web_ui.html"}}]
+Total time spent on web/first_web_ui.html                    -- 338 ms
+Total time                                                   -- 374 ms
+build.dart finished [1965 ms]
+
+---
+build.dart --machine --changed=web\out\first_web_ui.css --changed=web\out\first_web_ui.dart --changed=web\out\f...
+Total time                                                   --  26 ms
+build.dart finished [647 ms]
+
+---
+build.dart --machine --changed=web\example.html
+[{"method":"mapping","params":{"from":"web/first_web_ui.html","to":"web\\out\\first_web_ui.html"}}]
+Total time spent on web/first_web_ui.html                    -- 301 ms
+Total time                                                   -- 327 ms
+build.dart finished [881 ms]
+
+---
+build.dart --machine --changed=web\out\first_web_ui.css --changed=web\out\first_web_ui.dart --changed=web\out\f...
+Total time                                                   --  21 ms
+build.dart finished [504 ms]
+

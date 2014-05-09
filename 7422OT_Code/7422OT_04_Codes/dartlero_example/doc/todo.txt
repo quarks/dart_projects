@@ -1,0 +1,5 @@
+To Do
+
++ add the Task concept
++ add the one-to-many relationship between the Project and Task concepts
++ add tests

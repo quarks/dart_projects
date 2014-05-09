@@ -1,0 +1,120 @@
+<h2>Intersections and Tangents between Circles</h2>
+
+<h3>See if two cirles intersect</h3>
+<pre class="language-java">/**
+ * Determine if two circles overlap. This happens only 
+ * if the circumferences intersect.
+ * [cx0, cy0] centre of the first circle
+ * r0 radius of the first circle
+ * [cx1 , cy1] centre of the second circle
+ * r1 radius of the second circle
+ */
+public boolean circle_circle(float cx0, float cy0, float r0, float cx1, float cy1, float r1){
+  float dxSQ = (cx1 - cx0)*(cx1 - cx0);
+  float dySQ = (cy1 - cy0)*(cy1 - cy0);
+  float rSQ = (r0 + r1)*(r0 + r1);
+  float drSQ = (r0 - r1)*(r0 - r1);
+  return (dxSQ + dySQ <= rSQ && dxSQ + dySQ >= drSQ);
+}
+</pre>
+
+
+<h3>Calculate the intersection points between 2 circles</h3>
+<pre class="language-java">/**
+ * Calculate the intersection points between two circles.
+ * [cx0, cy0] centre of the first circle
+ * r0 radius of the first circle
+ * [cx1 , cy1] centre of the second circle
+ * r1 radius of the second circle
+ *
+ * If the array is of length:
+ * 0 then there is no intersection
+ * 2 there is just one intersection (the circles are touching)
+ * 4 there are two intersections
+ */
+public float[] circle_circle_p(float cx0, float cy0, float r0, float cx1, float cy1, float r1){
+  float[] result = null;
+  float dx = cx1 - cx0;
+  float dy = cy1 - cy0;
+  float distSQ = dx*dx + dy*dy;
+
+  if(distSQ > ACCY){
+    float r0SQ = r0 * r0;
+    float r1SQ = r1 * r1;
+    float diffRSQ = (r1SQ - r0SQ);
+    float root = 2 * (r1SQ + r0SQ) * distSQ - distSQ * distSQ - diffRSQ * diffRSQ;
+    if(root > -ACCY){
+      float distINV = 0.5f/ distSQ;
+      float scl = 0.5f - diffRSQ * distINV;
+      float x = dx * scl + cx0;
+      float y = dy * scl + cy0;
+      if(root < ACCY){
+        result = new float[] { x, y };
+      }
+      else {
+        root = distINV * sqrt(root);
+        float xfac = dx * root;
+        float yfac = dy * root;
+        result = new float[] { x-yfac, y+xfac,  x+yfac, y-xfac };
+      }
+    }
+  }
+  return (result == null) ? new float[0] : result;
+}
+</pre>
+
+
+<h3>Calculate the tangents between 2 circles</h3>
+<pre class="language-java">/**
+ * Will calculate the contact points for both outer and inner tangents.
+ * There are no tangents if one circle is completely inside the other.
+ * If the circles interact only the outer tangents exist. When the circles
+ * do not intersect there will be 4 tangents (outer and inner), the array
+ * has the outer pair first.
+ * 
+ * [cx0, cy0] centre of the first circle
+ * r0 radius of the first circle
+ * [cx1 , cy1] centre of the second circle
+ * r1 radius of the second circle
+ */
+public float[] tangents_between_circles(float cx0, float cy0, float r0, float cx1, float cy1, float r1) {
+  float[] result = null;
+  float dxySQ = (cx0 - cx1) * (cx0 - cx1) + (cy0 - cy1) * (cy0 - cy1);
+
+  if (dxySQ <= (r0-r1)*(r0-r1)) return result;
+
+  float d = sqrt(dxySQ);
+  float vx = (cx1 - cx0) / d;
+  float vy = (cy1 - cy0) / d;
+
+  float[] temp = new float[16];
+  int np = 0;
+  float c, h, nx, ny;
+  for (int sign1 = +1; sign1 >= -1; sign1 -= 2) {
+    c = (r0 - sign1 * r1) / d;
+    if (c*c > 1) continue;
+
+    h = sqrt(max(0.0, 1.0 - c*c));
+
+    for (int sign2 = +1; sign2 >= -1; sign2 -= 2) {
+      nx = vx * c - sign2 * h * vy;
+      ny = vy * c + sign2 * h * vx;
+
+      temp[np++] = cx0 + r0 * nx;
+      temp[np++] = cy0 + r0 * ny;
+      temp[np++] = cx1 + sign1 * r1 * nx;
+      temp[np++] = cy1 + sign1 * r1 * ny;
+    }
+  }
+  if(np > 0){
+    result = new float[np];
+    System.arraycopy(temp, 0, result, 0, np);
+  }
+  return (result == null) ? new float[0] : result;
+}
+</pre>
+
+<br/>
+
+
+

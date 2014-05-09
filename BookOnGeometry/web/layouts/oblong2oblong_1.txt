@@ -1,0 +1,14 @@
+{
+"PAPER":"paper002.jpg"
+
+,"HTML":"oblong2oblong_1.txt"
+
+,"AREA-NAMES":"titlearea,ta1"
+,"titlearea":"{\"X\":10,\"Y\":10,\"W\":310,\"H\":60}"
+,"ta1":"{\"X\":10,\"Y\":300,\"W\":310,\"H\":200}"
+
+,"TEXT-NAMES":"title,text1"
+,"title":"{\"TEXT\":\"Rectangle - rectangle intersections\",\"TEXT-AREAS\":\"titlearea\",\"FONT\":\"italic 16pt Arial\",\"ALIGN\":\"CENTER\",\"FONT-COLOR\":\"rgb(220,220,220)\",\"BACK-COLOR\":\"rgb(0,0,128)\",\"SPACING\":28}"
+,"text1":"{\"FILENAME\":\"oblong2oblong_1.txt\",\"TEXT-AREAS\":\"ta1\",\"FONT\":\"10pt Arial\",\"ALIGN\":\"JUSTIFY\",\"FONT-COLOR\":\"rgb(32,32,132)\",\"SPACING\":14}"
+
+}

@@ -1,0 +1,105 @@
+<h2>Circle - line intersection</h2>
+
+<h3>See if a line intersects with a circle</h3>
+
+<pre class="language-java">/**
+* Sees if a line intersects with the circumference of a circle.
+* Note if the line starts and ends inside the circle then 
+* there is no intersection.
+* [x0, y0] - [x1, y1] the line end coordinates 
+* [cx, cy] the centre of the circle
+* r the radius of the circle
+*/
+public boolean line_circle(float x0, float y0, float x1, float y1, float cx, float cy, float r){
+    float f = (x1 - x0);
+    float g = (y1 - y0);
+    float fSQ = f*f;
+    float gSQ = g*g;
+    float fgSQ = fSQ + gSQ;
+    float rSQ = r*r;
+    
+    float xc0 = cx - x0;
+    float yc0 = cy - y0;
+    float xc1 = cx - x1;
+    float yc1 = cy - y1;
+    
+    boolean lineInside = xc0*xc0 + yc0*yc0 < rSQ && xc1*xc1 + yc1*yc1 < rSQ;
+    
+    float fygx = f*yc0 - g*xc0;
+    float root = r*r*fgSQ - fygx*fygx;
+    
+    if(root > ACCY && !lineInside){
+      float fxgy = f*xc0 + g*yc0;
+      float t = fxgy / fgSQ;
+      if(t >= 0 && t <= 1)
+        return true;
+      // Circle intersects with one end then return true
+      if( (xc0*xc0 + yc0*yc0 < rSQ) || (xc1*xc1 + yc1*yc1 < rSQ) )
+        return true;
+    }
+    return false;
+}
+</pre>
+
+
+<h3>Calculate the intersection points between a line and circle</h3>
+
+<pre class="language-java">/**
+* Calculate the points of intersection between a line and the
+* circumference of a circle.
+* [x0, y0] - [x1, y1] the line end coordinates 
+* [cx, cy] the centre of the circle
+* r the radius of the circle
+*
+* An array is returned that contains the intersection points in x, y order.
+* If the returned array is of length:
+* 0 then there is no intersection.
+* 2 there is just one intersection (the line is a tangent to the circle).
+* 4 there are two intersections.
+*/
+public float[] line_circle_p(float x0, float y0, float x1, float y1, float cx, float cy, float r){
+    float[] result = null;
+    float f = (x1 - x0);
+    float g = (y1 - y0);
+    float fSQ = f*f;
+    float gSQ = g*g;
+    float fgSQ = fSQ + gSQ;
+    
+    float xc0 = cx - x0;
+    float yc0 = cy - y0;
+    
+    float fygx = f*yc0 - g*xc0;
+    float root = r*r*fgSQ - fygx*fygx;
+    if(root > -ACCY){
+      float[] temp = null;
+      int np = 0;
+      float fxgy = f*xc0 + g*yc0;
+      if(root < ACCY){    // tangent so just one point
+        float t = fxgy / fgSQ;
+        if(t >= 0 && t <= 1)
+          temp = new float[] { x0 + f*t, y0 + g*t};
+        np = 2;
+      }
+      else {  // possibly two intersections
+        temp = new float[4];
+        root = sqrt(root);
+        float t = (fxgy - root)/fgSQ;
+        if(t >= 0 && t <= 1){
+          temp[np++] = x0 + f*t;
+          temp[np++] = y0 + g*t;
+        }
+        t = (fxgy + root)/fgSQ;
+        if(t >= 0 && t <= 1){
+          temp[np++] = x0 + f*t;
+          temp[np++] = y0 + g*t;
+        }
+      }
+      if(temp != null){
+        result = new float[np];
+        System.arraycopy(temp, 0, result, 0, np);
+      }
+    }
+    return (result == null) ? new float[0] : result;
+}</pre> 
+
+<br/>

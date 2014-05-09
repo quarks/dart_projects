@@ -1,0 +1,14 @@
+{
+"PAPER":"paper002.jpg"
+
+,"HTML":"intro_1.txt"
+
+,"AREA-NAMES":"titlearea,ta1"
+,"titlearea":"{\"X\":60,\"Y\":80,\"W\":210,\"H\":60}"
+,"ta1":"{\"X\":50,\"Y\":160,\"W\":230,\"H\":200}"
+
+,"TEXT-NAMES":"title,text1"
+,"title":"{\"TEXT\":\"Geometry 2D Cookbook\",\"TEXT-AREAS\":\"titlearea\",\"FONT\":\"italic 16pt Arial\",\"ALIGN\":\"CENTER\",\"FONT-COLOR\":\"rgb(250,250,250)\",\"BACK-COLOR\":\"rgb(128,0,8)\",\"SPACING\":28}"
+,"text1":"{\"FILENAME\":\"intro_1.txt\",\"TEXT-AREAS\":\"ta1\",\"FONT\":\"10pt Arial\",\"ALIGN\":\"JUSTIFY\",\"FONT-COLOR\":\"rgb(132,32,32)\",\"SPACING\":14}"
+
+}

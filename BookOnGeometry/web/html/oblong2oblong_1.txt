@@ -1,0 +1,60 @@
+<h2>Intersections between rectangles</h2>
+
+
+<h3>Test to see if 2 rectangles overlap.</h3>
+<pre class="language-java">/**
+ * Determine whether two boxes intersect.
+ * The boxes are represented by the top-left and bottom-right corner coordinates. 
+ * 
+ * [ax0, ay0]/[ax1, ay1] top-left and bottom-right corners of rectangle A
+ * [bx0, by0]/[bx1, by1] top-left and bottom-right corners of rectangle B
+ */
+public boolean box_box(float ax0, float ay0, float ax1, float ay1, float bx0, float by0, float bx1, float by1){
+  float topA = min(ay0, ay1);
+  float botA = max(ay0, ay1);
+  float leftA = min(ax0, ax1);
+  float rightA = max(ax0, ax1);
+  float topB = min(by0, by1);
+  float botB = max(by0, by1);
+  float leftB = min(bx0, bx1);
+  float rightB = max(bx0, bx1);
+
+  return !(botA <= topB  || botB <= topA || rightA <= leftB || rightB <= leftA);
+}
+</pre>
+
+
+<h3>Calculate the coordinates of any overlap between 2 rectangles.</h3>
+<pre class="language-java">/**
+ * If two boxes overlap then the overlap region is another box. This method is used to 
+ * calculate the coordinates of the overlap. <br>
+ * 
+ * [ax0, ay0]/[ax1, ay1] top-left and bottom-right corners of rectangle A
+ * [bx0, by0]/[bx1, by1] top-left and bottom-right corners of rectangle B
+ *
+ * If the returned array has a length:
+ * 0 then they do not overlap <br>
+ * 4 then these are the coordinates of the top-left and bottom-right corners of the overlap region.
+ *  
+ */
+public float[] box_box_p(float ax0, float ay0, float ax1, float ay1, float bx0, float by0, float bx1, float by1){
+  float[] result = null;
+  float topA = min(ay0, ay1);
+  float botA = max(ay0, ay1);
+  float leftA = min(ax0, ax1);
+  float rightA = max(ax0, ax1);
+  float topB = min(by0, by1);
+  float botB = max(by0, by1);
+  float leftB = min(bx0, bx1);
+  float rightB = max(bx0, bx1);
+
+  if(botA <= topB  || botB <= topA || rightA <= leftB || rightB <= leftA)
+    return new float[0];
+
+  float leftO = (leftA < leftB) ? leftB : leftA;
+  float rightO = (rightA > rightB) ? rightB : rightA;
+  float botO = (botA > botB) ? botB : botA;
+  float topO = (topA < topB) ? topB : topA;
+  return new float[] {leftO, topO, rightO, botO};
+}
+</pre>

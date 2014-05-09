@@ -1,0 +1,2 @@
+The green rectangle will remain centred about the mouse position. If it intersects with a blue rectangle then the area of intersection is also a rectangle and is shown with a red border.
+Note that if one rectangle entirely surrounds a smaller rectangle then the area of intersection is the same as the smaller rectangle.

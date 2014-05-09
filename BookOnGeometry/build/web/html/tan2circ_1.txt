@@ -1,0 +1,49 @@
+<h2>Tangents to circle</h2>
+
+<h3>Calculate the tangents to a circle from a point</h3>
+
+<pre class="language-java">/**
+* Calculate the tangents from a point.
+* [x, y] the coordinates of the point
+* [cx, cy] the centre of the circle
+* r the radius of the circle
+* If the array is of length:
+* 0 then there is no tangent the point is inside the circle.
+* 2 there is just one intersection (the point is on the circumference).
+* 4  there are two points.
+*/
+public float[] tangents_to_circle(float x, float y, float cx, float cy, float r){
+    float[] result = null;
+    float dx = cx - x;
+    float dy = cy - y;
+    float dxSQ = dx * dx;
+    float dySQ = dy * dy;
+    float denom = dxSQ + dySQ;
+    
+    float root = denom - r*r;
+    
+    if(root > -ACCY){
+      float denomINV = 1.0f/denom;
+      float A, B;
+    
+      if(root < ACCY){ // point is on circle
+        A = -r*dx*denomINV;
+        B = -r*dy*denomINV;
+        result = new float[] { cx + A*r, cy + B*r };
+      }
+      else {
+        root = sqrt(root);
+        result = new float[4];
+        A = (-dy*root - r*dx)*denomINV;
+        B = (dx*root - r*dy)*denomINV;
+        result[0] = cx + A*r;
+        result[1] = cy + B*r;
+        A = (dy*root - r*dx)*denomINV;
+        B = (-dx*root - r*dy)*denomINV;
+        result[2] = cx + A*r;
+        result[3] = cy + B*r;  
+      }
+    }
+    return (result == null) ? new float[0] : result;
+}</pre>
+<br/>

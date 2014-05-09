@@ -1,0 +1,3 @@
+This book has a number of animations showing many common programming tasks in 2D geometry. The Java / Processing source code for each task is shown in the webpage below.
+
+To use any of these methods simply copy and paste them into your sketch, but make sure you include the constants and variables shown below. 

@@ -1,0 +1,2 @@
+For any position outside the circle it is always possible to draw two tangents. If the point is on the circumference then there is just one tangent. For any position inside the circle there are no tangents.
+Move the cursor over the sketch on the right. If the point is outside the circle it will show the tangents lines and where the tangents touch the circle.

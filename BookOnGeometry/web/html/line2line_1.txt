@@ -1,0 +1,199 @@
+<h2>Intersections between lines</h2>
+
+See if 2 finite lines intersect
+
+Calculate the intersection point for 2 finite lines
+
+Calculate the intersection point for 2 infinite lines
+
+Calculate the intersection points between a finite lines and a collection of lines
+
+
+<h3>Test for intersection of 2 finite lines.</h3>
+<pre class="language-java">/**
+ * See if two finite lines intersect.
+ * [x0, y0]-[x1, y1] start and end of the first line
+ * [x2, y2]-[x3, y3] start and end of the second line
+ */
+public boolean line_line(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3){
+  float f1 = (x1 - x0);
+  float g1 = (y1 - y0);
+  float f2 = (x3 - x2);
+  float g2 = (y3 - y2);
+  float f1g2 = f1 * g2;
+  float f2g1 = f2 * g1;
+  float det = f2g1 - f1g2;
+  if(abs(det) > ACCY){
+    float s = (f2*(y2 - y0) - g2*(x2 - x0))/ det;
+    float t = (f1*(y2 - y0) - g1*(x2 - x0))/ det;
+    return (s >= 0 && s <= 1 && t >= 0 && t <= 1);
+  }
+  return false;
+}
+</pre>
+
+
+<h3>Calculate the intersection point for 2 finite lines.</h3>
+<pre class="language-java">/**
+ * Find the point of intersection between two finite lines.
+ * This method uses x,y coordinates to represent the line end points.
+ * [x0, y0]-[x1, y1] start and end of the first line
+ * [x2, y2]-[x3, y3] start and end of the second line
+ * if the two lines are parallel then null is returned, otherwise the intercept 
+ * position is returned as an array.
+ * If the array is of length:
+ * 0 then there is no intersection (i.e. parallel)
+ * 2 these are the x/y coordinates of the intersection point.
+ */
+public float[] line_line_p(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3){
+  float[] result = null;
+  float f1 = (x1 - x0);
+  float g1 = (y1 - y0);
+  float f2 = (x3 - x2);
+  float g2 = (y3 - y2);
+  float f1g2 = f1 * g2;
+  float f2g1 = f2 * g1;
+  float det = f2g1 - f1g2;
+
+  if(abs(det) > ACCY){
+    float s = (f2*(y2 - y0) - g2*(x2 - x0))/ det;
+    float t = (f1*(y2 - y0) - g1*(x2 - x0))/ det;
+    if(s >= 0 && s <= 1 && t >= 0 && t <= 1)
+      result = new float[] { x0 + f1 * s, y0 + g1 * s };
+  }
+  return (result == null) ? new float[0] : result;
+}
+
+
+/**
+ * Find the point of intersection between two finite lines.
+ * This method uses PVector objects to represent the line end points.
+ * [x0, y0]-[x1, y1] start and end of the first line
+ * [x2, y2]-[x3, y3] start and end of the second line
+ * if the two lines are parallel then null is returned, otherwise the intercept 
+ * position is returned.
+ */
+public PVector line_line_p(PVector v0, PVector v1, PVector v2, PVector v3){
+  PVector intercept = null;
+
+  float f1 = (v1.x - v0.x);
+  float g1 = (v1.y - v0.y);
+  float f2 = (v3.x - v2.x);
+  float g2 = (v3.y - v2.y);
+  float f1g2 = f1 * g2;
+  float f2g1 = f2 * g1;
+  float det = f2g1 - f1g2;
+
+  if(abs(det) > ACCY){
+    float s = (f2*(v2.y - v0.y) - g2*(v2.x - v0.x))/ det;
+    float t = (f1*(v2.y - v0.y) - g1*(v2.x - v0.x))/ det;
+    if(s >= 0 && s <= 1 && t >= 0 && t <= 1)
+      intercept = new PVector(v0.x + f1 * s, v0.y + g1 * s);
+  }
+  return intercept;
+}
+</pre>
+
+
+<h3>Calculate the intersection point for 2 infinite lines.</h3>
+<pre class="language-java">/**
+ * Find the intersection point between two infinite lines that 
+ * pass through the points (v0,v1) and (v2,v3)
+ * if the two lines are parallel then null is returned, otherwise the intercept 
+ * position is returned.
+ */
+public PVector line_line_infinite_p(PVector v0, PVector v1, PVector v2, PVector v3){
+  PVector intercept = null;
+
+  float f1 = (v1.x - v0.x);
+  float g1 = (v1.y - v0.y);
+  float f2 = (v3.x - v2.x);
+  float g2 = (v3.y - v2.y);
+  float f1g2 = f1 * g2;
+  float f2g1 = f2 * g1;
+  float det = f2g1 - f1g2;
+
+  if(abs(det) > ACCY){
+    float s = (f2*(v2.y - v0.y) - g2*(v2.x - v0.x))/ det;
+    intercept = new PVector(v0.x + f1 * s, v0.y + g1 * s);
+  }
+  return intercept;
+}
+
+/**
+ * Find the point of intersection between two infinite lines that pass through 
+ * the points ([x0,y0],[x1,y1]) and ([x2,y2],[x3,y3]).
+ * An array is returned that contains the intersection points in x, y order.
+ * If the array is of length:
+ * 0 then there is no intersection (i.e. parallel)
+ * 2 these are the x/y coordinates of the intersection point.
+ */
+public float[] line_line_infinite_p(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3){
+  float[] result = null;
+  float f1 = (x1 - x0);
+  float g1 = (y1 - y0);
+  float f2 = (x3 - x2);
+  float g2 = (y3 - y2);
+  float f1g2 = f1 * g2;
+  float f2g1 = f2 * g1;
+  float det = f2g1 - f1g2;
+
+  if(abs(det) > ACCY){
+    float s = (f2*(y2 - y0) - g2*(x2 - x0))/ det;
+    result = new float[] { x0 + f1 * s, y0 + g1 * s };
+  }
+  return (result == null) ? new float[0] : result;
+}</pre>
+
+
+<h3>Calculate the intersection points between a finite lines and a collection of lines.</h3>
+<pre class="language-java">/**
+ * Calculate the intersection points between a finite line and a collection of lines.
+ * This will calculate all the intersection points between a given line
+ * and the lines formed from the points in the array xy.
+ * [x0, y0]-[x1, y1] start and end of the line to consider
+ *
+ * If the parameter continuous = true the points form a continuous line so the <br>
+ * line 1 is from xy[0],xy[1] to xy[2],xy[3] and
+ * line 2 is from xy[2],xy[3] to xy[4],xy[5] and so on
+ * 
+ * and if continuous is false then each set of four array elements form their 
+ * own line
+ * line 1 is from xy[0],xy[1] to xy[2],xy[3] and
+ * line 2 is from xy[4],xy[5] to xy[6],xy[7] and so on.
+ *
+ * Any intersections are returned back as an array
+ * If the array is of length:
+ * 0 then there is no intersection (i.e. parallel)
+ * 2 (or a multiple of 2) these are the x/y coordinates of the intersection point(s).
+ */
+public float[] line_lines_p(float x0, float y0, float x1, float y1, float[] xy, boolean continuous){
+  float[] result = null;
+  int stride = continuous ? 2 : 4;
+  int np = 0;
+  float[] temp = new float[xy.length];
+  float f2, g2, f1g2, f2g1, det;
+  float f1 = (x1 - x0);
+  float g1 = (y1 - y0);
+  for(int i = 0; i < xy.length - 3; i += stride){
+    f2 = (xy[i+2] - xy[i]);
+    g2 = (xy[i+3] - xy[i+1]);
+    f1g2 = f1 * g2;
+    f2g1 = f2 * g1;
+    det = f2g1 - f1g2;
+    if(abs(det) > ACCY){
+      float s = (f2*(xy[i+1] - y0) - g2*(xy[i] - x0))/ det;
+      float t = (f1*(xy[i+1] - y0) - g1*(xy[i] - x0))/ det;
+      if(s >= 0 && s <= 1 && t >= 0 && t <= 1){
+        temp[np++] = x0 + f1 * s;
+        temp[np++] = y0 + g1 * s;
+      }
+    }
+  }
+  if(np > 0){
+    result = new float[np];
+    System.arraycopy(temp, 0, result, 0, np);
+  }
+  return (result == null) ? new float[0] : result;
+}
+</pre>

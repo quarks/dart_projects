@@ -1,0 +1,4 @@
+name: vector_test
+description: A sample command-line application
+#dependencies:
+#  unittest: any

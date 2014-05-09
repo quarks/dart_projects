@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Page Turner</title>
+<link rel="stylesheet" href="page_turner.css">
+</head>
+<body>
+
+  <div align="center">
+    <h1>Muttley's Album</h1>
+    <canvas id="book" width="700" height="420"></canvas>
+    <br />
+    <button id="prev" value="0" class="button">Prev Page</button>
+    <button id="p0" class="button">0</button>
+    <button id="p1" class="button">1</button>
+    <button id="p2" class="button">2</button>
+    <button id="p3" class="button">3</button>
+    <button id="p4" class="button">4</button>
+    <button id="p5" class="button">5</button>
+    <button id="p6" class="button">6</button>
+    <button id="p7" class="button">7</button>
+    <button id="p8" class="button">8</button>
+    <button id="p9" class="button">9</button>
+    <button id="p10" class="button">10</button>
+    <button id="p11" class="button">11</button>
+    <button id="p12" class="button">12</button>
+    <button id="next" class="button">Next Page</button>
+
+  </div>
+
+  <p align="center">Page turning created with Dart!</p>
+
+  <div id="description"></div>
+  <div id="mytext"></div>
+
+  <script type="application/dart" src="page_turner.dart"></script>
+  <script src="packages/browser/dart.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+name: dartlero_category_links
+version: 0.0.0
+author: Dzenan Ridjanovic <dzenanr@gmail.com>
+description: A model with 1 concept that uses dartlero.
+homepage: http://ondart.me/
+dependencies:
+  dartlero:
+    git: git://github.com/dzenanr/dartlero.git

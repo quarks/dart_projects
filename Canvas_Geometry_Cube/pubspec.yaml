@@ -1,0 +1,6 @@
+name: Canvas_Geometry_Cube
+description: A sample web application
+dependencies:
+  browser: any
+  json: any
+  three: any

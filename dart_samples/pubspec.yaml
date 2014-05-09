@@ -1,0 +1,12 @@
+name: dart_samples
+version: 0.0.1-dev
+description: Samples for Dart
+homepage: https://github.com/dart-lang/dart-samples
+environment:
+  sdk: '>=0.6.17'
+dependencies:
+  browser: any
+  vector_math: any
+  hop: any
+  path: any
+  html5lib: any

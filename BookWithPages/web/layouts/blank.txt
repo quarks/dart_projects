@@ -1,0 +1,3 @@
+{
+"PAPER":"paper002.jpg"
+}

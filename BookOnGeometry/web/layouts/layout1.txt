@@ -1,0 +1,20 @@
+{
+"PAPER":"paper002.jpg"
+
+,"AREA-NAMES":"dog1,dog2,dog3,a1,a2,t1"
+,"dog1":"{\"X\":50,\"Y\":300,\"W\":150,\"H\":300}"
+,"dog2":"{\"X\":50,\"Y\":250,\"W\":150,\"H\":300}"
+,"dog3":"{\"X\":50,\"Y\":200,\"W\":150,\"H\":300}"
+,"a1":"{\"X\":10,\"Y\":40,\"W\":300,\"H\":128}"
+,"a2":"{\"X\":110,\"Y\":168,\"W\":200,\"H\":200}"
+,"t1":"{\"X\":10,\"Y\":10,\"W\":310,\"H\":30}"
+
+,"IMAGE-NAMES":"image1,image2,image3"
+,"image1":"{\"IMAGE-AREA\":\"dog1\",\"FILENAME\":\"Bluehound.gif\"}"
+,"image2":"{\"IMAGE-AREA\":\"dog2\",\"FILENAME\":\"Woof.gif\"}"
+,"image3":"{\"IMAGE-AREA\":\"dog3\",\"FILENAME\":\"PurpGuy.gif\"}"
+
+,"TEXT-NAMES":"text1,title"
+,"text1":"{\"FILENAME\":\"t0.txt\",\"TEXT-AREAS\":\"a1,a2\",\"FONT\":\"12pt Calibri\",\"ALIGN\":\"JUSTIFY\",\"FONT-COLOR\":\"rgb(255,64,64)\",\"BACK-COLOR\":\"rgb(100,255,255)\",\"SPACING\":16}"
+,"title":"{\"TEXT\":\"ProControl Plus\",\"TEXT-AREAS\":\"t1\",\"FONT\":\"italic 20pt Calibri\",\"ALIGN\":\"CENTER\",\"BACK-COLOR\":\"rgb(255,255,100)\",\"SPACING\":28}"
+}

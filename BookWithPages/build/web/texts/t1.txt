@@ -1,0 +1,2 @@
+<h2>Lager</h2>
+<p>text area 1 text </p>

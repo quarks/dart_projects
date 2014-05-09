@@ -1,0 +1,170 @@
+<h2>Line - point methods</h2>
+
+
+<h3>Point with a finite length line.</h3>
+<pre class="language-java"> /**
+ * See if point is near the a line of finite length.
+ * 
+ * v0, v1 the start and end coordinates for the line
+ * p point to consider
+ */
+public boolean is_point_near_line(PVector v0, PVector v1, PVector p) {
+  PVector pnl = point_nearest_line(v0, v1, p);
+  if(pnl != null){
+    float d = sqrt((p.x-pnl.x)*(p.x-pnl.x) +(p.y-pnl.y)*(p.y-pnl.y)); 
+    if (d <= NEARNESS)
+      return true;
+  }
+  return false;
+}
+
+/**
+ * See if point is near the a line of finite length.
+ * 
+ * v0, v1 the start and end coordinates for the line
+ * p point to consider
+ * vp must not be null
+ * If p is considered close to the line then the coordinates of the nearest point on the line
+ * will be stored in vp
+ */
+public boolean is_point_near_line(PVector v0, PVector v1, PVector p, PVector vp) {
+  PVector pnl = point_nearest_line(v0, v1, p);
+  if(pnl != null){
+    float d = sqrt((p.x-pnl.x)*(p.x-pnl.x) +(p.y-pnl.y)*(p.y-pnl.y)); 
+    vp.set(pnl);
+    if (d <= NEARNESS)
+      return true;
+  }
+  return false;
+}
+
+/**
+ * For a point find the nearest position on a finite line.
+ * 
+ * v0, v1 the start and end coordinates for the line
+ * p point to consider
+ * If the line is undefined (v0 == v1) or if the normal from point 'p' does not fall on 
+ * the line then return null, otherwise return the nearest point.
+ */
+public PVector point_nearest_line(PVector v0, PVector v1, PVector p){
+  PVector vp = null;
+  PVector the_line = PVector.sub(v1, v0);
+  float lineMag = the_line.mag();
+  lineMag = lineMag * lineMag;
+  if (lineMag > 0.0) {
+    PVector pv0_line = PVector.sub(p, v0);
+    float t = pv0_line.dot(the_line)/lineMag;
+    if (t >= 0 && t <= 1){
+      vp = new PVector();
+      vp.x = the_line.x * t + v0.x;
+      vp.y = the_line.y * t + v0.y;
+    }
+  }
+  return vp;
+}</pre>
+
+
+<h3>Point with an infinite length line.</h3>
+<pre class="language-java">/**
+ * See if point is near a line of infinite length.
+ * 
+ * v0, v1 the infinite line passes through these points
+ * p point to consider
+ */
+public boolean is_point_near_infinite_line(PVector v0, PVector v1, PVector p) {
+  PVector pnl = point_nearest_infinite_line(v0, v1, p);
+  if(pnl != null){
+    float d = sqrt((p.x-pnl.x)*(p.x-pnl.x) +(p.y-pnl.y)*(p.y-pnl.y)); 
+    if (d <= NEARNESS)
+      return true;
+  }
+  return false;
+}
+
+/**
+ * See if point is near a line of infinite length.
+ * 
+ * v0, v1 the infinite line passes through these points
+ * p point to consider
+ * vp must not be null
+ * If p is considered close to the line then the coordinates of the nearest point on the line
+ * will be stored in vp
+ */
+public boolean is_point_near_infinite_line(PVector v0, PVector v1, PVector p, PVector vp) {
+  PVector pnl = point_nearest_infinite_line(v0, v1, p);
+  if(pnl != null){
+    float d = sqrt((p.x-pnl.x)*(p.x-pnl.x) +(p.y-pnl.y)*(p.y-pnl.y)); 
+    vp.set(pnl);
+    if (d <= NEARNESS)
+      return true;
+  }
+  return false;
+}
+
+/**
+ * For a point find the nearest position on an infinite line.
+ * 
+ * v0, v1 the infinite line passes through these points
+ * p point to consider
+ * If the line is undefined (v0 == v1) then return null, otherwise
+ * return the nearest point.
+ */
+public PVector point_nearest_infinite_line(PVector v0, PVector v1, PVector p){
+  PVector vp = null;
+  PVector the_line = PVector.sub(v1, v0);
+  float lineMag = the_line.mag();
+  lineMag = lineMag * lineMag;
+  if (lineMag > 0.0) {
+    vp = new PVector();
+    PVector pv0_line = PVector.sub(p, v0);
+    float t = pv0_line.dot(the_line)/lineMag;
+    vp.x = the_line.x * t + v0.x;
+    vp.y = the_line.y * t + v0.y;
+  }
+  return vp;
+}
+</pre>
+
+
+<h3>Which side is the point?</h3>
+<pre class="language-java">/**
+ * Determines whether a point [px, py] is 'inside', 'outside' or on an 
+ * infinite line that passes through the points [x0,y0] and [x1,y1].
+ * The direction of a normal drawn from a point is considered 'outside'
+ *
+ * Returns either PLANE_INSIDE, PLANE_OUTSIDE or ON_PLANE
+ */
+public int which_side_pp(float x0, float y0, float x1, float y1, float px, float py){
+  int side;
+  float dot = (y0 - y1)*(px - x0) + (x1 - x0)*(py - y0);
+
+  if(dot < -ACCY)
+    side = PLANE_INSIDE;
+  else if(dot > ACCY)
+    side = PLANE_OUTSIDE;
+  else 
+    side = ON_PLANE;
+  return side;
+}
+
+/**
+ * Determines whether a point [px, py] is 'inside', 'outside' or on an  
+ * infinite line that passes through the point [x0,y0] and the normal 
+ * from [x0, y1] passes through the point [xn, yn]. 
+ * The direction of a normal drawn from a point is considered 'outside'
+ *
+ * Returns either PLANE_INSIDE, PLANE_OUTSIDE or ON_PLANE
+ */
+public int which_side_pn(float x0, float y0, float nx, float ny, float px, float py){
+  int side;
+  float dot = nx*(px - x0) + ny*(py - y0);
+
+  if(dot < -ACCY)
+    side = PLANE_INSIDE;
+  else if(dot > ACCY)
+    side = PLANE_OUTSIDE;
+  else 
+    side = ON_PLANE;
+  return side;
+}
+</pre>

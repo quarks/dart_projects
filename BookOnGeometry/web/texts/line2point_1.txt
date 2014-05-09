@@ -1,0 +1,1 @@
+In this animation the finite line is represented by a thick dark green line and the equivalent infinite line by the thin line that extends accross the full display area. The red dot represents the point of interest and will move as the mouse moves.

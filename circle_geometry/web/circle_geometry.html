@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Circle geometry</title>
+    <link rel="stylesheet" href="circle_geometry.css">
+  </head>
+  <body>
+    <h1>Circle geometry</h1>
+    
+  <h3>Circle - line intersection</h3>
+  <div id="canvas_container_id">
+    <canvas id="circ2circ_b" width="256" height="256"></canvas>
+  </div>
+  <p>Press and drag the mouse to define the line. Clicking the mouse
+    will create a random line.</p>
+  <p>If both ends of the line is within the circle there is no
+    intersection. If one end of the line is inside and the other outside
+    the circle then there is a single intersection point.</p>
+  <p>If both ends of the line are outside the circle then there
+    meybe two intersection points, a single intersection point (line is
+    a tangent) or no intersection points.</p>
+  <p>Intersection points are show as red dots.</p>
+
+
+
+
+  <h3>Tangents to a circle from a point</h3>
+  <div id="canvas_container_id">
+    <canvas id="circ2circ_c" width="256" height="256"></canvas>
+  </div>
+
+
+  <h3>Tangents between circles</h3>
+
+  <div id="canvas_container_id">
+    <canvas id="circ2circ_a" width="256" height="256"></canvas>
+  </div>
+  <p>The green circle will be centered about the mouse as it moves.</p>
+  <p>
+    The lines between the circles are tangents to both circles. If the
+    circles do not intersect then there are 4 tangents, if they
+    intersect then there are just 2, the <i>outer</i> tangents. If one
+    circle completely covers the other circle then there are no
+    tangents.
+  </p>
+  <p>When two circles intersect then the intersecion points are
+    shown as red cicles. Normally there will be two intersection points
+    but if the circles are just touching then there will be just one.</p>
+
+    <script type="application/dart" src="circle_geometry.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>

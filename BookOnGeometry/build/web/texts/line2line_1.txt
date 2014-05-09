@@ -1,0 +1,2 @@
+Not only it is possible to test whether two finite length lines intersect, you can get the coordinates of intersection.
+It is also possible to calculate all the intersection of points made by a single line with a collection of lines. The collection lines might represent a continuous line or a number of distinct lines.

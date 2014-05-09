@@ -1,0 +1,3 @@
+The green circle will be centered about the mouse as it moves.
+The lines between the circles are tangents to both circles. If the circles do not intersect then there are 4 tangents, two outer tangents (purple) and two inner tangents (orange). If the two circles intersect then there are no inner tangents but there will be 1 or 2 intersection points (red spots). The single intersection point is when the two circles are just touching.
+If one circle completely covers the other circle then there are no tangents.
