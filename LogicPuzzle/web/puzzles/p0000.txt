@@ -1,0 +1,16 @@
+{
+"desc":'''<p>Its amazing how many free samples of various new products arrived through the letter boxes of five neigbours last week. Can you work through the clues to discover how many domestic (for household use) and personal (for use on the body) samples everyone received?</p>
+<ol>
+  <li>No-one received precisely the same number of domestictic free samples as personal free samples.</li>
+  <li>The man who received eight sachets of hair shampoo (for personal use) also received three sachets of carpet shampoo (for domestic use).</li>
+  <li>Alan received three fewer free samples of perosnal products than the quanitity of free samples of domestic products received by Bertie.</li>
+  <li>Jenny received two more free samples of personal products than the number of free samples of domestic products received by Kate.</li>
+  <li>Micky didn't recieve exactly one fewer domestic free samples than Kate.<br>
+  </li>
+</ol>''',
+
+"nbrAnswers":5,
+"nbrUnknowns":3,
+
+"a":"[ 'Alan', 'Bertie', 'Jenny', 'Kate', 'Mikey' ]";
+}

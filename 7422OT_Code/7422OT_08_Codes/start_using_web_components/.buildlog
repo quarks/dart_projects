@@ -3,3 +3,36 @@ build.dart --machine --changed=web\out\start_using_web_components.css --changed=
 Total time                                                   --  23 ms
 build.dart finished [504 ms]
 
+---
+build.dart --machine --full
+The built-in library 'dart:json' is not available on the stand-alone VM.
+'package:web_ui/component_build.dart': error: line 23 pos 1: library handler failed
+import 'dart:json' as json;
+^
+'file:///Users/peter/git/dart_projects/7422OT_Code/7422OT_08_Codes/start_using_web_components/build.dart': error: line 2 pos 1: library handler failed
+import 'package:web_ui/component_build.dart';
+^
+build.dart finished [62 ms]
+
+---
+build.dart --machine --clean
+The built-in library 'dart:json' is not available on the stand-alone VM.
+'package:web_ui/component_build.dart': error: line 23 pos 1: library handler failed
+import 'dart:json' as json;
+^
+'file:///Users/peter/git/dart_projects/7422OT_Code/7422OT_08_Codes/start_using_web_components/build.dart': error: line 2 pos 1: library handler failed
+import 'package:web_ui/component_build.dart';
+^
+build.dart finished [83 ms]
+
+---
+build.dart --machine --full
+The built-in library 'dart:json' is not available on the stand-alone VM.
+'package:web_ui/component_build.dart': error: line 23 pos 1: library handler failed
+import 'dart:json' as json;
+^
+'file:///Users/peter/git/dart_projects/7422OT_Code/7422OT_08_Codes/start_using_web_components/build.dart': error: line 2 pos 1: library handler failed
+import 'package:web_ui/component_build.dart';
+^
+build.dart finished [85 ms]
+
