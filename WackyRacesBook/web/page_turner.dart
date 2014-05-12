@@ -6,8 +6,8 @@ import 'dart:async';
 import 'dart:collection';
 
 
-//import "../../quarks_libs/bin/geometry2d.dart";
-//import "../../quarks_libs/bin/vector2d.dart";
+import "../../quarks_libs/bin/geometry2d.dart";
+import "../../quarks_libs/bin/vector2d.dart";
 
 part "book.dart";
 part "page.dart";
